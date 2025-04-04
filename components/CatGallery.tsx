@@ -3,7 +3,7 @@
 import useSWR from "swr";
 import Cat from "./CatData";
 
-const api_key = "CAT_API_KEY";
+const api_key = process.env.CAT_API_KEY;
 
 const fetcher = (url: string) =>
   fetch(url, {
