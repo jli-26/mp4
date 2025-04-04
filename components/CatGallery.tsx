@@ -8,7 +8,7 @@ const api_key = process.env.CAT_API_KEY;
 const fetcher = (url: string) =>
   fetch(url, {
     headers: {
-      "x-api-key": api_key,
+      "x-api-key": api_key as string,
     },
   }).then((res) => res.json());
 
