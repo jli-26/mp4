@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 interface Cat {
   id: string;
@@ -27,13 +28,18 @@ export default function CatGallery() {
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="text-2xl font-bold text--800 mb-4 ">Cat Gallery</h2>
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Cat Gallery</h2>
       {cats.length > 0 && (
-        <img
-          src={cats[currentIndex].url}
-          alt="Cat"
-          className="w-64 h-64 object-cover"
-        />
+        <div className="w-64 h-64 relative">
+          <Image
+            src={cats[currentIndex].url}
+            alt="Cat"
+            fill
+            className="object-cover rounded-lg"
+            sizes="(max-width: 768px) 100vw, 256px"
+            priority
+          />
+        </div>
       )}
       <button
         onClick={nextCat}
@@ -43,3 +49,4 @@ export default function CatGallery() {
     </div>
   );
 }
+
